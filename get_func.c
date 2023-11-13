@@ -9,7 +9,7 @@
  *
  */
 
-int (*get_func(const char *s))(char *)
+int (*get_func(const char *s))(char *, va_list)
 {
 	spec sp[] = {
 		{"c", func_c},

@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 			i++;
 			count = 0;
 			string = get_func(&format[i]);
-			count = string(va_arg(args, char *));
+			count = string(va_arg(args, char *), args);
 			n = n + count - 1;
 		}
 	}
