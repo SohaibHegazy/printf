@@ -16,7 +16,7 @@ int print_s(va_list args, int n)
 	int len;
 
 	for (len = 0; string[len] != '\0'; len++)
-	;
+		;
 	write(1, &string, len);
 	n += len;
 	return (n);
@@ -40,7 +40,7 @@ int print_int(va_list args, int n)
 	sprintf(num, "%d", d);
 
 	for (len = 0; num[len] != '\0'; len++)
-	;
+		;
 	write(1, &num, len);
 	n += len;
 	return (n);
