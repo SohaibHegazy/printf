@@ -60,7 +60,7 @@ int _printf(const char *format, ...)
 				int d = va_arg(args, int);
 				int len;
 
-				sprint(num, "%d", d);
+				sprintf(num, "%d", d);
 
 				for (len = 0; num[len] != '\0'; len ++)
 					;
