@@ -10,6 +10,6 @@
 
 
 int _printf(const char *format, ...);
-
+int print_s(va_list, int);
 
 #endif

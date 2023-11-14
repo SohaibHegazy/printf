@@ -1,5 +1,28 @@
 #include "main.h"
 
+
+/**
+ * print_s - function to print s
+ *
+ * @args: list of arguments
+ * @n: count of printed characters
+ *
+ * Return: n
+ */
+
+int print_s(va_list args, int n)
+{
+	char *string = va_arg(args, char *);
+	int len;
+
+	for (len = 0; string[len] != '\0'; len++)
+		;
+	write(1, &string, len);
+	n += len;
+	return (n);
+}
+
+
 /**
  *
  * _printf - like printf
@@ -33,19 +56,14 @@ int _printf(const char *format, ...)
 			if (format[i] == 'c')
 			{
 				char c = va_arg(args, int);
+
 				write(1, &c, 1);
 				n++;
 			}
 
 			if (format[i] == 's')
 			{
-				char *string = va_arg(args, char *);
-				int len;
-
-				for (len = 0; string[len] != '\0'; len ++)
-					;
-				write(1, &string, len);
-				n += len;
+				print_s(args, n);
 			}
 
 			if (format[i] == '%')
@@ -62,13 +80,13 @@ int _printf(const char *format, ...)
 
 				sprintf(num, "%d", d);
 
-				for (len = 0; num[len] != '\0'; len ++)
+				for (len = 0; num[len] != '\0'; len++)
 					;
 				write(1, &num, len);
 
 				n += len;
 			}
-			
+
 			if (format[i] == '\0')
 				break;
 		}
