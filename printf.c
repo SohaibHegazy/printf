@@ -22,9 +22,51 @@ int print_s(va_list args, int n)
 	return (n);
 }
 
+/**
+ * print_int - like printf
+ *
+ * @args: list of arguments
+ * @n: number of characters printed
+ *
+ * Return: n
+ */
+
+int print_int(va_list args, int n)
+{
+	char num[50];
+	int d = va_arg(args, int);
+	int len;
+
+	sprintf(num, "%d", d);
+
+	for (len = 0; num[len] != '\0'; len++)
+		;
+	write(1, &num, len);
+
+	n += len;
+	return (n);
+}
 
 /**
+ * print_c - like printf
  *
+ * @args: list of arguments
+ * @n: number of characters printed
+ *
+ * Return: n
+ */
+
+int print_c(va_list args, int n)
+{
+	char c = va_arg(args, int);
+
+	write(1, &c, 1);
+	n++;
+	return (n);
+}
+
+
+/**
  * _printf - like printf
  *
  * @format: input string
@@ -54,38 +96,18 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			if (format[i] == 'c')
-			{
-				char c = va_arg(args, int);
-
-				write(1, &c, 1);
-				n++;
-			}
+				print_c(args, n);
 
 			if (format[i] == 's')
-			{
 				print_s(args, n);
-			}
 
 			if (format[i] == '%')
 			{
 				write(1, &format[i], 1);
 				n++;
 			}
-
 			if (format[i] == 'd' || format[i] == 'i')
-			{
-				char num[50];
-				int d = va_arg(args, int);
-				int len;
-
-				sprintf(num, "%d", d);
-
-				for (len = 0; num[len] != '\0'; len++)
-					;
-				write(1, &num, len);
-
-				n += len;
-			}
+				print_int(args, n);
 
 			if (format[i] == '\0')
 				break;
