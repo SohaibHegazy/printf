@@ -11,24 +11,66 @@
 
 int _printf(const char *format, ...)
 {
-	int i = 0, n = 0, count = 0;
-	int (*string)(char *);
+	int i = 0, n = 0;
 
 	va_list args;
 
+	if (*format == NULL)
+		print (-1);
+
 	va_start(args, format);
 
-	for (i = 0; format[i] != '\0'; i++, n++)
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
+		{
 			write(1, &format[i], sizeof(char));
+			n++;
+		}
 		else
 		{
 			i++;
-			count = 0;
-			string = get_func(&format[i]);
-			count = string(va_arg(args, char *), args);
-			n = n + count - 1;
+			if (format[i] == 'c')
+			{
+				char c = va_arg(args, int);
+				write(1, &c, 1);
+				n++;
+			}
+
+			if (format[i] == 's')
+			{
+				char *string = va_arg(args, char *);
+				int len;
+
+				for (len = 0; string[len] != '\0'; len ++)
+					;
+				write(1, &string, len);
+				n += len;
+			}
+
+			if (format[i] == '%')
+			{
+				write(1, &format[i], 1);
+				n++;
+			}
+
+			if (format[i] == 'd' || format[i] == 'i')
+			{
+				char num[50];
+				int d = va_arg(args, int);
+				int len;
+
+				sprint(num, "%d", d);
+
+				for (len = 0; num[len] != '\0'; len ++)
+					;
+				write(1, &num, len);
+
+				n += len;
+			}
+			
+			if (format[i] == '\0')
+				break;
 		}
 	}
 	return (n);

@@ -1,6 +1,16 @@
 #include "main.h"
 
 /**
+ * get_param - function to get the parameter
+ *
+ * @s: the specifier
+ *
+ * Return: void
+ */
+
+
+
+/**
  * get_func - function to select the operation
  *
  * @s: the specifier
@@ -19,9 +29,9 @@ int (*get_func(const char *s))(char *, va_list)
 	};
 	int i = 0;
 
-	while (i < 3)
+	while (sp[i].c)
 	{
-		if (s && sp[i].c[0] == s[0])
+		if (*s == sp[i].c[0])
 			return (sp[i].f);
 		i++;
 	}
