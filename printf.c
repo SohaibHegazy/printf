@@ -131,6 +131,7 @@ int _printf(const char *format, ...)
 					;
 				write(1, &num, len);
 				n += len;
+			}
 
 			if (format[i] == '\0')
 				break;
