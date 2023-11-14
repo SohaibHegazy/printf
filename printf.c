@@ -70,25 +70,6 @@ int print_c(va_list args, int n)
 
 
 /**
- * print_c - like printf
- *
- * @args: list of arguments
- * @n: number of characters printed
- *
- * Return: n
- */
-
-int print_c(va_list args, int n)
-{
-	char c = va_arg(args, int);
-
-	write(1, &c, 1);
-	n++;
-	return (n);
-}
-
-
-/**
  * _printf - like printf
  *
  * @format: input string
