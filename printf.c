@@ -54,7 +54,7 @@ int _printf(const char *format, ...)
 				n++;
 			}
 
-			/*if (format[i] == 'd' || format[i] == 'i')
+			if (format[i] == 'd' || format[i] == 'i')
 			{
 				char num[50];
 				int d = va_arg(args, int);
@@ -67,7 +67,7 @@ int _printf(const char *format, ...)
 				write(1, &num, len);
 
 				n += len;
-			} */
+			}
 			
 			if (format[i] == '\0')
 				break;
