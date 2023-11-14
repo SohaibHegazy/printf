@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * print_s - function to print s
  *
