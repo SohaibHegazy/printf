@@ -68,21 +68,6 @@ int print_c(va_list args, int n)
 	return (n);
 }
 
-int print_int(va_list args, int n)
-{
-	char num[50];
-	int d = va_arg(args, int);
-	int len;
-
-	sprintf(num, "%d", d);
-
-	for (len = 0; num[len] != '\0'; len++)
-		;
-	write(1, &num, len);
-
-	n += len;
-	return (n);
-}
 
 /**
  * print_c - like printf
