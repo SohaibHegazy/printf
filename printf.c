@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 /**
  * print_s - function to print s
  *
@@ -20,9 +21,6 @@ int print_s(va_list args, int n)
 	n += len;
 	return (n);
 }
-
-
-
 
 /**
  * print_int - like printf
@@ -48,7 +46,6 @@ int print_int(va_list args, int n)
 	n += len;
 	return (n);
 }
-
 
 /**
  * print_c - like printf
